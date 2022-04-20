@@ -1,6 +1,6 @@
 const clientId = '221191b429194bccb50d64986a518586';
-const redirectUri = 'http://jammmdersen.surge.sh';
-// const redirectUri = 'http://localhost:3000/';
+// const redirectUri = 'http://jammmdersen.surge.sh';
+const redirectUri = 'http://localhost:3000/';
 let accessToken = '';
 let expiresIn;
 

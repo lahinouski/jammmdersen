@@ -5,7 +5,6 @@ import Spotify from '../../util/Spotify';
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { Favorites, ErrorPage, Details, History, SignIn, Search, LogIn, Home } from '../../Pages';
 
-
 export default function App() {
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
