@@ -1,0 +1,59 @@
+.Track {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+
+  width: 90%;
+  height: 55px;
+  padding: .88rem .55rem;
+  background-color: rgba(1, 12, 63, .7);
+  box-shadow: 0 2.2px 1.2px 1.2px #000;
+  border-radius: 0 55px 55px 0;
+}
+
+.Track-action {
+  cursor: pointer;
+  padding: 1.6rem;
+  font-size: .9rem;
+  transition: color .25s;
+}
+
+.Track-action:hover {
+  color: rgba(265, 265, 265, .5);
+}
+
+.Track-information {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+
+.Track-information img {
+  width: 64px;
+  height: 64px;
+  margin-right: 20px;
+}
+
+.Track-data {
+  display: block;
+  width: 75%;
+}
+
+.Track-data h3 {
+  margin: .4rem 0;
+}
+
+.Track-data p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-size: .83rem;
+  font-weight: 300;
+  color: rgba(256, 256, 256, .8);
+}
+
+.Track-information audio {
+  display: block;
+  clear: left;
+}

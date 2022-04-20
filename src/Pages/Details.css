@@ -1,0 +1,34 @@
+img {
+  height: 420px
+}
+
+.details-container {
+  margin: auto 12.8rem;
+  width: 60%;
+  min-width: 60%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #010c3f;
+  box-shadow: 0 2.2px 1.2px 0 #000;
+  border-radius: 0 15px 15px 0;
+}
+
+.details-container h2 {
+  padding-left: .9rem;
+  max-width: 90%;
+  font-size: 2.8rem;
+  text-align: left;
+}
+
+.details-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.details-favorite {
+  cursor: pointer;
+  font-size: 2.2rem;
+  padding: .3rem .9rem;
+  height: 60px;
+}
