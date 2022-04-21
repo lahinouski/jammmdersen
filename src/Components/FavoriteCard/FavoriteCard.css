@@ -1,11 +1,12 @@
-img {
-  height: 420px
+.image-small {
+  height: 200px;
 }
 
-.details-container {
-  margin: auto 12.8rem;
-  width: 60%;
-  min-width: 60%;
+.details-container-small {
+  margin: 1.8rem;
+  width: 30%;
+  min-width: 30%;
+  max-height: 200px;
   display: flex;
   justify-content: space-between;
   background-color: #010c3f;
@@ -13,22 +14,22 @@ img {
   border-radius: 0 15px 15px 0;
 }
 
-.details-container h2 {
+.details-container-small h2 {
   padding-left: .9rem;
   max-width: 90%;
-  font-size: 2.8rem;
+  font-size: 1.8rem;
   text-align: left;
 }
 
-.details-info {
+.details-info-small {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.details-action {
+.details-action-small {
   cursor: pointer;
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   padding: .3rem .9rem;
   height: 60px;
 }

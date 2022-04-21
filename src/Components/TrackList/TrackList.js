@@ -9,9 +9,7 @@ export default function TrackList(props) {
         <Track
           key={track.id}
           track={track}
-          onDetails={props.onDetails}
-          onRemove={props.onRemove}
-          isRemoval={props.isRemoval} />))}
+          onDetails={props.onDetails} />))}
     </div>
   );
 }

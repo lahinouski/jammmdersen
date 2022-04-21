@@ -5,8 +5,7 @@ html,
   height: 100%;
 }
 
-.navigation-text :first-child,
-.navigation-text :last-child {
+.navigation-text-link {
   font-family: 'Poppins', sans-serif;
   font-size: 1.12rem;
   color: #fff;
@@ -16,8 +15,7 @@ html,
   display: inline-block;
 }
 
-.navigation-text :first-child:hover,
-.navigation-text :last-child:hover {
+.navigation-text-link:hover {
   color: #6c41ec;
 }
 

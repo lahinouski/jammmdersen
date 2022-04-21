@@ -2,6 +2,14 @@ import React from 'react';
 import './Details.css';
 
 export default function Details(props) {
+  function renderAction() {
+    return (
+      props.isRemoval ?
+        <div className='details-action' onClick={() => props.onRemove(props.artistInfo)}>&#9733;</div> :
+        <div className='details-action' onClick={() => props.onAdd(props.artistInfo)}>&#9734;</div>
+    );
+  }
+
   return (
     <div className='details-container'>
       <img src={props.artistInfo.picture} alt="Artist image" />
@@ -22,8 +30,7 @@ export default function Details(props) {
           <li>Popularity: {props.artistInfo.popularity}</li>
         </ul>
       </div>
-      {/* &#9734; &#9733; */}
-      <div className='details-favorite'>&#9734;</div>
+      {renderAction()}
     </div >
   )
 }

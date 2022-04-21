@@ -6,15 +6,33 @@ import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { Favorites, ErrorPage, Details, History, SignIn, Search, LogIn, Home } from '../../Pages';
 
 export default function App() {
-  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [isAuthorized, setIsAuthorized] = useState(true);
   const [searchResults, setSearchResults] = useState([]);
   const [artistInfo, setArtistInfo] = useState({});
   const navigate = useNavigate();
 
-  function getArtist(artistId) {
-    Spotify.eximine(artistId)
-      .then(artistInfo => setArtistInfo(artistInfo));
-    navigate("/details");
+  const [favoriteArtists, setfavoriteArtists] = useState([]);
+  const [isRemoval, setIsRemoval] = useState(false);
+
+  function addArtist(artist) {
+    let artistInFavorites = false;
+    for (let i = 0; i < favoriteArtists.length; i++) {
+      if (artist.id === favoriteArtists[i].id) {
+        artistInFavorites = true;
+      }
+    }
+    if (!artistInFavorites) {
+      setIsRemoval(true);
+      const newFavorites = favoriteArtists.concat(); // Returns a shallow copy
+      newFavorites.push(artist);
+      setfavoriteArtists(newFavorites);
+    }
+  }
+
+  function removeArtist(artist) {
+    setIsRemoval(false);
+    const newFavorites = favoriteArtists.filter(favoriteArtist => favoriteArtist.id !== artist.id);
+    setfavoriteArtists(newFavorites);
   }
 
   function search(searchTerm) {
@@ -24,6 +42,12 @@ export default function App() {
         .then(tracks => setSearchResults(tracks));
       navigate("/search");
     }
+  }
+
+  function getArtist(artistId) {
+    Spotify.examine(artistId)
+      .then(artistInfo => setArtistInfo(artistInfo));
+    navigate("/details");
   }
 
   Spotify.getAccessToken();
@@ -36,13 +60,13 @@ export default function App() {
         <nav>
           {isAuthorized ?
             <div className='navigation-text'>
-              <Link to="favorites">Favorites</Link>
-              <Link to="history">History</Link>
-              <Link to="/">Log out</Link>
+              <Link className='navigation-text-link' to="favorites">Favorites</Link>
+              <Link className='navigation-text-link' to="history">History</Link>
+              <Link className='navigation-text-link' to="/">Log out</Link>
             </div> :
             <div className='navigation-text'>
-              <Link to="signIn">Sign in</Link>
-              <Link to="logIn">Log in</Link>
+              <Link className='navigation-text-link' to="signIn">Sign in</Link>
+              <Link className='navigation-text-link' to="logIn">Log in</Link>
             </div>}
         </nav>
       </header>
@@ -50,9 +74,20 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/search" element={<Search searchResults={searchResults} onDetails={getArtist} />} />
-        <Route path="/details" element={<Details artistInfo={artistInfo} />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/search" element={
+          <Search
+            searchResults={searchResults}
+            onDetails={getArtist} />} />
+        <Route path="/details" element={
+          <Details
+            artistInfo={artistInfo}
+            isRemoval={isRemoval}
+            onAdd={addArtist}
+            onRemove={removeArtist} />} />
+        <Route path="/favorites" element={
+          <Favorites
+            favoriteArtists={favoriteArtists}
+            onRemove={removeArtist} />} />
         <Route path="/history" element={<History />} />
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/logIn" element={<LogIn />} />

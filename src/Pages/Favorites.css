@@ -1,0 +1,9 @@
+.cards-container {
+  min-width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  height: 400px;
+  overflow-y: scroll;
+}

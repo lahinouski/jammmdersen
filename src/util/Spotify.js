@@ -48,7 +48,7 @@ const Spotify = {
       });
   },
 
-  eximine(artistId) {
+  examine(artistId) {
     const headers = { Authorization: `Bearer ${accessToken}` };
     return fetch(`https://api.spotify.com/v1/artists/${artistId}`, { headers: headers })
       .then(response => {
