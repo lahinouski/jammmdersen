@@ -53,6 +53,7 @@ export default function FavoriteCard(props) {
           {props.artistInfo.name}
         </h2>
         <ul>
+          {/* <li><h2>{props.artistInfo.name}</h2></li> */}
           <li>Followers: {props.artistInfo.followers}</li>
           <li>Popularity: {props.artistInfo.popularity}</li>
         </ul>
