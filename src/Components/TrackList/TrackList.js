@@ -1,15 +1,19 @@
 import React from 'react';
 import Track from '../Track/Track';
+import { useSelector, useDispatch } from 'react-redux';
+// import { getSearchResults, eraseSearchResults } from '../../features/searchResultsSlice';
 import './TrackList.css';
 
 export default function TrackList(props) {
+  const searchResults = useSelector((state) => state.searchResults.value);
+  // const dispatch = useDispatch();
+
   return (
     <div className="TrackList">
-      {props.tracks && props.tracks.map(track => (
+      {searchResults && searchResults.map(track => (
         <Track
           key={track.id}
-          track={track}
-          onDetails={props.onDetails} />))}
+          track={track} />))}
     </div>
   );
 }

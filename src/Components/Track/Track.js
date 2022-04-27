@@ -1,7 +1,20 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { getDetails, eraseDetails } from '../../features/detailsSlice';
+import Spotify from '../../util/Spotify';
 import './Track.css';
 
 export default function Track(props) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  function getArtist(artistId) {
+    Spotify.examine(artistId)
+      .then(artistInfo => dispatch(getDetails(artistInfo)));
+    navigate(`/details?artist=${artistId}`);
+  }
+
   return (
     <div className="Track">
       <div className="Track-information">
@@ -14,7 +27,7 @@ export default function Track(props) {
           <audio src={props.track.sample} type="audio/ogg" controls />
         </div>
       </div>
-      <a className="Track-action" onClick={() => props.onDetails(props.track.artistId)}>Details</a>
+      <a className="Track-action" onClick={() => getArtist(props.track.artistId)}>Details</a>
     </div>
   );
 }

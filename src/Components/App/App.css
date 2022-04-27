@@ -3,15 +3,28 @@ html,
 #root {
   font-size: 18px;
   height: 100%;
+  /* text-decoration: 'none'; */
 }
 
+.displayCurrentUser {
+  color: #6c41ec;
+  margin-right: 2rem;
+}
+
+.displayCurrentUser:hover {
+  cursor: pointer;
+}
+
+
+
+
 .navigation-text-link {
+  text-decoration: none;
   font-family: 'Poppins', sans-serif;
   font-size: 1.12rem;
   color: #fff;
-  padding-right: 1.8rem;
-  padding-top: 1.2rem;
-  text-decoration: none;
+  margin-right: 1.8rem;
+  margin-top: 1.2rem;
   display: inline-block;
 }
 
@@ -19,9 +32,14 @@ html,
   color: #6c41ec;
 }
 
+.logo {
+  text-decoration: none;
+}
+
 header {
   display: flex;
   justify-content: space-between;
+  /* text-decoration: none; */
   /* width: 100%; */
   margin: 0;
   background-color: #010c3f;
@@ -30,9 +48,10 @@ header {
   color: #fff;
 }
 
-h1 {
+.logo h1 {
+  text-decoration: none;
   margin: 0;
-  padding: .8rem 2rem;
+  margin: .8rem 2rem;
   background-color: #010c3f;
   text-align: center;
   font-family: 'Poppins', sans-serif;

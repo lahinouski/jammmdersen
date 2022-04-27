@@ -64,6 +64,7 @@ const Spotify = {
             name: jsonResponse.name,
             picture: jsonResponse.images[0].url,
             genres: jsonResponse.genres,
+            followers: jsonResponse.followers.total,
             popularity: jsonResponse.popularity
           }
         } else {

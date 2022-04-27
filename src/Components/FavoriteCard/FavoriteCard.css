@@ -3,13 +3,14 @@
 }
 
 .details-container-small {
-  margin: 1.8rem;
-  width: 30%;
+  margin: .8rem 3.8rem;
+  width: 35%;
   min-width: 30%;
   max-height: 200px;
   display: flex;
   justify-content: space-between;
-  background-color: #010c3f;
+  /* background-color: #010c3f; */
+  background-color: rgba(1, 12, 63, .7);
   box-shadow: 0 2.2px 1.2px 0 #000;
   border-radius: 0 15px 15px 0;
 }

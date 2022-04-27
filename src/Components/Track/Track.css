@@ -43,14 +43,18 @@
 
 .Track-data h3 {
   margin: .4rem 0;
+  max-height: 1.35rem;
+  overflow: hidden;
 }
 
 .Track-data p {
   margin-block-start: 0;
   margin-block-end: 0;
-  font-size: .83rem;
+  font-size: .82rem;
   font-weight: 300;
   color: rgba(256, 256, 256, .8);
+  max-height: 1rem;
+  overflow: hidden;
 }
 
 .Track-information audio {
