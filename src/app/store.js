@@ -6,7 +6,7 @@ import detailsReducer from '../features/detailsSlice';
 export const store = configureStore({
   reducer: {
     currentUserUsername: currentUserUsernameReducer,
-    searchResults: searchResultsReducer,
+    searchResults: searchResultsReducer, // Memoizing Selectors with Reselect
     details: detailsReducer
   }
 });

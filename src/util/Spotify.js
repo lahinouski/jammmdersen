@@ -1,20 +1,19 @@
 const clientId = '221191b429194bccb50d64986a518586';
 // const redirectUri = 'http://jammmdersen.surge.sh';
 const redirectUri = 'http://localhost:3000/';
-let accessToken = '';
-let expiresIn;
+const accessToken = sessionStorage.getItem('accessToken');
+// alert(accessToken);
 
 const Spotify = {
   getAccessToken() {
-    if (accessToken !== '') {
+    if (accessToken) {
       return accessToken;
     } else if (window.location.href.match(/access_token=([^&]*)/) && window.location.href.match(/expires_in=([^&]*)/)) {
       const Url = window.location.href;
       const tokenArray = Url.match(/access_token=([^&]*)/);
       const expiresInArray = Url.match(/expires_in=([^&]*)/);
-      accessToken = tokenArray[1];
-      expiresIn = expiresInArray[1];
-      window.setTimeout(() => accessToken = '', expiresIn * 1000);
+      sessionStorage.setItem('accessToken', tokenArray[1]);
+      window.setTimeout(() => sessionStorage.removeItem('accessToken'), expiresInArray[1] * 1000);
       window.history.pushState('Access Token', null, '/');
     } else {
       window.location = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;

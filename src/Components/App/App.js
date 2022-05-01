@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 // import SearchBar from '../SearchBar/SearchBar';
 import Spotify from '../../util/Spotify';
-import { Routes, Route, Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Routes, Route, Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { Favorites, ErrorPage, Details, History, SignIn, Search, LogIn, Home } from '../../Pages';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -21,26 +21,6 @@ export default function App() {
     setIsAuthorized(false);
     dispatch(logOut());
   }
-
-  // function isArtistInFavorites(artistId) {
-  //   for (let i = 0; i < favoriteArtists.length; i++) {
-  //     if (artistId === favoriteArtists[i].id) return true;
-  //   }
-  //   return false;
-  // }
-
-  // function addArtist(artist) {
-  //   if (!isArtistInFavorites(artist.id)) {
-  //     const newFavorites = favoriteArtists.concat();
-  //     newFavorites.push(artist);
-  //     setfavoriteArtists(newFavorites);
-  //   }
-  // }
-
-  // function removeArtist(artist) {
-  //   const newFavorites = favoriteArtists.filter(favoriteArtist => favoriteArtist.id !== artist.id);
-  //   setfavoriteArtists(newFavorites);
-  // }
 
   // useEffect(() => Spotify.getAccessToken(), []);
   Spotify.getAccessToken();

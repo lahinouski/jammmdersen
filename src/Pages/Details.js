@@ -9,13 +9,13 @@ export default function Details() {
   const currentUserUsername = useSelector((state) => state.currentUserUsername.value);
   const users = JSON.parse(sessionStorage.getItem('users'));
   const currentUser = currentUserUsername && users.find(user => user.username === currentUserUsername);
-  const theArtistIsAlreadyInFavorites =
+  const artistIsInFavorites =
     currentUserUsername &&
     currentUser.favorites.find(idol => idol.id === artistInfo.id);
   const navigate = useNavigate();
-  const [toggleStar, setToggleStar] = useState(theArtistIsAlreadyInFavorites);
+  const [toggleStar, setToggleStar] = useState(artistIsInFavorites);
 
-  useEffect(() => setToggleStar(theArtistIsAlreadyInFavorites));
+  useEffect(() => setToggleStar(artistIsInFavorites), [artistIsInFavorites]);
 
   function udateUsers() {
     const usersExceptCurrent = users.filter(user => user.username !== currentUserUsername);
@@ -27,8 +27,8 @@ export default function Details() {
     if (!currentUserUsername) {
       navigate("/signIn");
       return;
-    } else if (!theArtistIsAlreadyInFavorites) {
-      // theArtistIsAlreadyInFavorites = !theArtistIsAlreadyInFavorites;
+    } else if (!artistIsInFavorites) {
+      // artistIsInFavorites = !artistIsInFavorites;
       currentUser.favorites = [...currentUser.favorites, artistInfo];
       udateUsers();
       setToggleStar(!toggleStar);
@@ -46,15 +46,17 @@ export default function Details() {
     <React.Fragment>
       <SearchBar />
       <div className='details-container'>
-        <img src={artistInfo.picture} alt="Artist image" />
+        <img src={artistInfo.picture} alt={artistInfo.name} />
         <div className='details-info'>
           <h2>
             {artistInfo.name}
           </h2>
           <ul>
             {Array.isArray(artistInfo.genres) && artistInfo.genres.map(genre => <li>{genre}</li>)}
+            <br />
+            <br />
+            <li>Popularity: {artistInfo.popularity}</li>
           </ul>
-          <p>Popularity: {artistInfo.popularity}</p>
         </div>
         {toggleStar ?
           <div className='details-action' onClick={removeArtist}>&#9733;</div> :

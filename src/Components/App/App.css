@@ -15,9 +15,6 @@ html,
   cursor: pointer;
 }
 
-
-
-
 .navigation-text-link {
   text-decoration: none;
   font-family: 'Poppins', sans-serif;
@@ -32,15 +29,9 @@ html,
   color: #6c41ec;
 }
 
-.logo {
-  text-decoration: none;
-}
-
 header {
   display: flex;
   justify-content: space-between;
-  /* text-decoration: none; */
-  /* width: 100%; */
   margin: 0;
   background-color: #010c3f;
   text-align: center;
@@ -48,8 +39,11 @@ header {
   color: #fff;
 }
 
-.logo h1 {
+.logo {
   text-decoration: none;
+}
+
+.logo h1 {
   margin: 0;
   margin: .8rem 2rem;
   background-color: #010c3f;
@@ -59,11 +53,11 @@ header {
   color: #fff;
 }
 
-h1 .highlight {
+.logo h1:hover {
   color: #6c41ec;
 }
 
-h1:hover {
+.highlight {
   color: #6c41ec;
 }
 
@@ -74,7 +68,6 @@ h2 {
 
 .App {
   height: 100%;
-  /* padding: 0 10%; */
   background-image: url('./background_photo_desktop.jpg');
   background-size: cover;
   /* background-position: center; */
@@ -88,11 +81,4 @@ h2 {
   display: flex;
   justify-content: space-between;
   width: 100%;
-}
-
-@media only screen and (max-width: 1020px) {
-  .App-playlist {
-    align-items: center;
-    flex-direction: column;
-  }
 }

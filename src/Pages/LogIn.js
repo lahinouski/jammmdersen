@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentUser } from '../features/currentUserUsernameSlice';
-// import './Form.css';
+import './SignIn.css';
 
 export default function LogIn(props) {
   const users = sessionStorage.getItem('users') ? JSON.parse(sessionStorage.getItem('users')) : [];
@@ -45,11 +45,11 @@ export default function LogIn(props) {
   };
 
   return (
-    <div className="" style={{ marginLeft: '20rem' }}>
-      <h2>Log in</h2>
+    <div className="signin-container login-container">
+      <h1>Log <span className="highlight">in</span>n<span className="highlight">&#9832;</span></h1>
       <form className="" onSubmit={onSubmitForm}>
-        <div className="">
-          <label className="">Username</label>
+        <div className="form-input-row">
+          <label className="">Username:</label>
           <input
             type="text"
             name="username"
@@ -58,8 +58,8 @@ export default function LogIn(props) {
             required
           />
         </div>
-        <div className="">
-          <label className="">Password</label>
+        <div className="form-input-row">
+          <label className="">Password:</label>
           <input
             type="password"
             name="password"
@@ -68,9 +68,7 @@ export default function LogIn(props) {
             required
           />
         </div>
-        <div className="">
-          <input type="submit" value="Submit" />
-        </div>
+        <button className="submit-button login-button" type="submit">LOG IN</button>
       </form>
     </div>
   );

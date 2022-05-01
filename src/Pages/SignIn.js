@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentUser } from '../features/currentUserUsernameSlice';
-// import './UserForm.css';
+import './SignIn.css';
 
 export default function SignIn(props) {
   const users = sessionStorage.getItem('users') ? JSON.parse(sessionStorage.getItem('users')) : [];
@@ -23,12 +23,12 @@ export default function SignIn(props) {
 
   function onSubmitForm(event) {
     event.preventDefault();
-    const doesUserExist = users && users.find(user => user.username === userForm.username);
+    const doesUserExist = users.find(user => user.username === userForm.username);
     if (userForm.confirmPassword !== userForm.password) {
       alert('Passwords do not match');
       return;
     } else if (doesUserExist) {
-      alert('This username is already taken');
+      alert('Username is already taken');
       return;
     }
     users.length ?
@@ -40,11 +40,11 @@ export default function SignIn(props) {
   }
 
   return (
-    <div className="" style={{ marginLeft: '20rem' }}>
-      <h2>Sign in</h2>
+    <div className="signin-container">
+      <h1><span className="highlight">S</span>ign in</h1>
       <form className="" onSubmit={onSubmitForm}>
-        <div className="">
-          <label className="">Username</label>
+        <div className="form-input-row">
+          <label for="username" className="">Username:</label>
           <input
             type="text"
             name="username"
@@ -53,8 +53,8 @@ export default function SignIn(props) {
             required
           />
         </div>
-        <div className="">
-          <label className="">Password</label>
+        <div className="form-input-row">
+          <label for="password" className="">Password:</label>
           <input
             type="password"
             name="password"
@@ -63,8 +63,8 @@ export default function SignIn(props) {
             required
           />
         </div>
-        <div className="">
-          <label className="">Confirm Password</label>
+        <div className="form-input-row">
+          <label for="confirmPassword" className="">Confirm Password:</label>
           <input
             type="password"
             name="confirmPassword"
@@ -73,11 +73,7 @@ export default function SignIn(props) {
             required
           />
         </div>
-        <div className="">
-          <button className="" type="submit">Sign in</button>
-          <input type="submit" value="Submit" />
-          {/* <div type="submit" value="Submit">Submit</div> */}
-        </div>
+        <button className="submit-button" type="submit">SIGN IN</button>
       </form>
     </div>
   );
