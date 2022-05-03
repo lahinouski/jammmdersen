@@ -7,12 +7,12 @@ export const currentUserUsernameSlice = createSlice({
     setCurrentUser: (state, action) => {
       state.value = action.payload;
     },
-    logOut: (state) => {
+    eraseCurrentUser: (state) => {
       state.value = '';
     }
   }
 });
 
-export const { setCurrentUser, logOut } = currentUserUsernameSlice.actions;
+export const { setCurrentUser, eraseCurrentUser } = currentUserUsernameSlice.actions;
 
 export default currentUserUsernameSlice.reducer;

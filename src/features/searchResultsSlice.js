@@ -5,7 +5,7 @@ export const searchResultsSlice = createSlice({
   name: 'searchResults',
   initialState: { value: [] },
   reducers: {
-    getSearchResults: (state, action) => {
+    setSearchResults: (state, action) => {
       state.value = action.payload;
     },
     eraseSearchResults: (state) => {
@@ -19,6 +19,6 @@ export const searchResultsSlice = createSlice({
 //   (searchResults) => searchResults.value
 // );
 
-export const { getSearchResults, eraseSearchResults } = searchResultsSlice.actions;
+export const { setSearchResults, eraseSearchResults } = searchResultsSlice.actions;
 
 export default searchResultsSlice.reducer;

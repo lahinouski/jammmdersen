@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { setCurrentUser } from '../features/currentUserUsernameSlice';
+import { useDispatch } from 'react-redux';
+import { setCurrentUser } from '../../features/currentUserUsernameSlice';
 import './SignIn.css';
 
-export default function SignIn(props) {
+export default function SignIn() {
   const users = sessionStorage.getItem('users') ? JSON.parse(sessionStorage.getItem('users')) : [];
   const [userForm, setUserForm] = useState({
     username: '',
@@ -15,11 +15,6 @@ export default function SignIn(props) {
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  function onUpdateField(event) {
-    const nextFormState = { ...userForm, [event.target.name]: event.target.value };
-    setUserForm(nextFormState);
-  }
 
   function onSubmitForm(event) {
     event.preventDefault();
@@ -34,14 +29,19 @@ export default function SignIn(props) {
     users.length ?
       sessionStorage.setItem('users', JSON.stringify([...users, userForm])) :
       sessionStorage.setItem('users', JSON.stringify([userForm]));
-    props.setIsAuthorized(true); // ???
     dispatch(setCurrentUser(userForm.username));
+    sessionStorage.setItem('userOnline', userForm.username);
     navigate("/");
+  }
+
+  function onUpdateField(event) {
+    const nextFormState = { ...userForm, [event.target.name]: event.target.value };
+    setUserForm(nextFormState);
   }
 
   return (
     <div className="signin-container">
-      <h1><span className="highlight">S</span>ign in</h1>
+      <h1><span className="highlight">S</span>ign in<span className="highlight notes">&#9835;</span></h1>
       <form className="" onSubmit={onSubmitForm}>
         <div className="form-input-row">
           <label for="username" className="">Username:</label>

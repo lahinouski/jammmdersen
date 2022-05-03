@@ -15,8 +15,9 @@
   width: 25%;
 }
 
-.login-container h1 {
-  margin: 1.2rem 0;
+.login-container h1,
+.signin-container h1 {
+  margin: 1rem 0 2rem;
 }
 
 .form-input-row {
@@ -57,7 +58,7 @@ form input {
 }
 
 .submit-button {
-  margin: 1rem 0 0 14.2rem;
+  margin: .6rem 0 0 14.2rem;
   font-family: 'Poppins', sans-serif;
   font-size: 1.12rem;
   font-weight: 600;
@@ -78,5 +79,12 @@ form input {
 }
 
 .login-button {
-  margin: 1rem 0 0 11.2rem;
+  margin: .65rem 0 0 11.2rem;
+}
+
+.notes {
+  position: relative;
+  top: 6rem;
+  left: 12rem;
+  /* margin-left: 12.5rem; */
 }

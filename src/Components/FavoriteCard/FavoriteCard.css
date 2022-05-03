@@ -1,6 +1,7 @@
 .image-small {
   height: 200px;
   width: 200px;
+  cursor: pointer;
 }
 
 .details-container-small ul {
@@ -26,6 +27,7 @@
   overflow: hidden;
   font-size: 1.8rem;
   text-align: left;
+  cursor: pointer;
 }
 
 .details-info-small {

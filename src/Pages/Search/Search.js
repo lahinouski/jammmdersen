@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import SearchBar from '../Components/SearchBar/SearchBar';
-import SearchResults from '../Components/SearchResults/SearchResults';
+import SearchBar from '../../Components/SearchBar/SearchBar';
+import TrackList from '../../Components/TrackList/TrackList';
 import { useSearchParams } from "react-router-dom";
 // import { useDispatch } from 'react-redux';
-// import { eraseSearchResults } from './../features/searchResultsSlice';
+// import { eraseSearchResults } from '../../features/searchResultsSlice';
 
 export default function Search() {
   const [serchParams, setSerchParams] = useSearchParams();
@@ -20,7 +20,7 @@ export default function Search() {
     <React.Fragment>
       <SearchBar />
       <div className="App-playlist">
-        <SearchResults />
+        <TrackList />
       </div>
     </React.Fragment>
   );

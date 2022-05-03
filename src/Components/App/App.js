@@ -1,29 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
-// import SearchBar from '../SearchBar/SearchBar';
-import Spotify from '../../util/Spotify';
-import { Routes, Route, Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { Favorites, ErrorPage, Details, History, SignIn, Search, LogIn, Home } from '../../Pages';
-
+import React, { useEffect } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { logOut } from '../../features/currentUserUsernameSlice';
+import { Favorites, ErrorPage, Details, History, SignIn, Search, LogIn, Home } from '../../Pages';
+import { setCurrentUser, eraseCurrentUser } from '../../features/currentUserUsernameSlice';
+import Spotify from '../../util/Spotify';
+import './App.css';
 
 export default function App() {
   const currentUserUsername = useSelector((state) => state.currentUserUsername.value);
-  const [isAuthorized, setIsAuthorized] = useState(false);
-  const [favoriteArtists, setfavoriteArtists] = useState([]);
   const dispatch = useDispatch();
 
-  // const [searchHistory, setSearchHistory] = useState([]);
-  // const [searchParams, setSearchParams] = useSearchParams();
-
   function handleLogOut() {
-    setIsAuthorized(false);
-    dispatch(logOut());
+    dispatch(eraseCurrentUser());
+    sessionStorage.removeItem('userOnline');
   }
 
-  // useEffect(() => Spotify.getAccessToken(), []);
-  Spotify.getAccessToken();
+  useEffect(() => {
+    dispatch(setCurrentUser(sessionStorage.getItem('userOnline')));
+    !sessionStorage.getItem('token') && Spotify.getAccessToken();
+  }, []);
+
   return (
     <div className="App">
       <header>
@@ -31,7 +27,7 @@ export default function App() {
           <h1>Ja<span className="highlight">mmm</span>dersen</h1>
         </Link>
         <nav>
-          {isAuthorized ?
+          {sessionStorage.getItem('userOnline') ?
             <div className="navigation-text">
               <span className="displayCurrentUser">{currentUserUsername}</span>
               <Link className="navigation-text-link" to="favorites">Favorites</Link>
@@ -51,8 +47,8 @@ export default function App() {
         <Route path="/details" element={<Details />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/history" element={<History />} />
-        <Route path="/signIn" element={<SignIn setIsAuthorized={setIsAuthorized} />} />
-        <Route path="/logIn" element={<LogIn setIsAuthorized={setIsAuthorized} />} />
+        <Route path="/signIn" element={<SignIn />} />
+        <Route path="/logIn" element={<LogIn />} />
         <Route path="*" element={<ErrorPage />} />
         {/* <Route index element={<Home />} /> */}
       </Routes>

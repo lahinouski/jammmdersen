@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate } from "react-router-dom";
-import SearchBar from '../Components/SearchBar/SearchBar';
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSelector, useDispatch } from 'react-redux';
+import { getDetails, eraseDetails } from '../../features/detailsSlice';
+import SearchBar from '../../Components/SearchBar/SearchBar';
+import Spotify from '../../util/Spotify';
 import './Details.css';
 
 export default function Details() {
@@ -12,10 +14,20 @@ export default function Details() {
   const artistIsInFavorites =
     currentUserUsername &&
     currentUser.favorites.find(idol => idol.id === artistInfo.id);
+  const [isFavorite, setIsFavorite] = useState(artistIsInFavorites);
+  const [params] = useSearchParams();
   const navigate = useNavigate();
-  const [toggleStar, setToggleStar] = useState(artistIsInFavorites);
+  const dispatch = useDispatch();
 
-  useEffect(() => setToggleStar(artistIsInFavorites), [artistIsInFavorites]);
+  useEffect(() => setIsFavorite(artistIsInFavorites));
+  useEffect(() => {
+    const artistId = params.get('artist');
+    if (artistId) {
+      Spotify.examine(artistId)
+        .then((artistInfo) => dispatch(getDetails(artistInfo)));
+    }
+    return () => dispatch(eraseDetails());
+  }, []);
 
   function udateUsers() {
     const usersExceptCurrent = users.filter(user => user.username !== currentUserUsername);
@@ -31,7 +43,7 @@ export default function Details() {
       // artistIsInFavorites = !artistIsInFavorites;
       currentUser.favorites = [...currentUser.favorites, artistInfo];
       udateUsers();
-      setToggleStar(!toggleStar);
+      setIsFavorite(!isFavorite);
     }
   }
 
@@ -39,7 +51,7 @@ export default function Details() {
     const updatedFavorites = currentUser.favorites.filter(artist => artist.id !== artistInfo.id);
     currentUser.favorites = updatedFavorites;
     udateUsers();
-    setToggleStar(!toggleStar);
+    setIsFavorite(!isFavorite);
   }
 
   return (
@@ -48,9 +60,7 @@ export default function Details() {
       <div className='details-container'>
         <img src={artistInfo.picture} alt={artistInfo.name} />
         <div className='details-info'>
-          <h2>
-            {artistInfo.name}
-          </h2>
+          <h2>{artistInfo.name}</h2>
           <ul>
             {Array.isArray(artistInfo.genres) && artistInfo.genres.map(genre => <li>{genre}</li>)}
             <br />
@@ -58,7 +68,7 @@ export default function Details() {
             <li>Popularity: {artistInfo.popularity}</li>
           </ul>
         </div>
-        {toggleStar ?
+        {isFavorite ?
           <div className='details-action' onClick={removeArtist}>&#9733;</div> :
           <div className='details-action' onClick={addArtist}>&#9734;</div>}
       </div>

@@ -1,33 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux';
-import { getDetails, eraseDetails } from '../../features/detailsSlice';
-import Spotify from '../../util/Spotify';
 import './Track.css';
 
-export default function Track(props) {
+function Track({ track }) {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  function getArtist(artistId) {
-    Spotify.examine(artistId)
-      .then(artistInfo => dispatch(getDetails(artistInfo)));
-    navigate(`/details?artist=${artistId}`);
-  }
 
   return (
     <div className="Track">
       <div className="Track-information">
-        <img src={props.track.artwork} alt={`${props.track.name} album artwork`} />
+        <img src={track.artwork} alt={`${track.name} album artwork`} />
         <div className="Track-data">
-          <h3>{props.track.name}</h3>
-          <p>{props.track.artist} | {props.track.album}</p>
+          <h3>{track.name}</h3>
+          <p>{track.artist} | {track.album}</p>
         </div>
         <div className="audio-player">
-          <audio src={props.track.sample} type="audio/ogg" controls />
+          <audio src={track.sample} type="audio/ogg" controls />
         </div>
       </div>
-      <a className="Track-action" onClick={() => getArtist(props.track.artistId)}>Details</a>
+      <a className="Track-action" onClick={() => navigate(`/details?artist=${track.artistId}`)}>Details</a>
     </div>
   );
 }
+
+Track.propTypes = {
+  track: PropTypes.object
+}
+
+export default Track;

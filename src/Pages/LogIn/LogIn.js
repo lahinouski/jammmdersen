@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { setCurrentUser } from '../features/currentUserUsernameSlice';
-import './SignIn.css';
+import { setCurrentUser } from '../../features/currentUserUsernameSlice';
 
-export default function LogIn(props) {
+export default function LogIn() {
   const users = sessionStorage.getItem('users') ? JSON.parse(sessionStorage.getItem('users')) : [];
   const [loginForm, setForm] = useState({
     username: '',
@@ -40,7 +39,7 @@ export default function LogIn(props) {
       return;
     }
     dispatch(setCurrentUser(loginForm.username));
-    props.setIsAuthorized(true);
+    sessionStorage.setItem('userOnline', loginForm.username);
     navigate("/");
   };
 
