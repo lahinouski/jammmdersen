@@ -15,7 +15,8 @@ export default function Details() {
           <div className="details-info">
             <h2>{artistInfo.name}</h2>
             <ul>
-              {Array.isArray(artistInfo.genres) && artistInfo.genres.map((genre) => <li>{genre}</li>)}
+              {Array.isArray(artistInfo.genres) &&
+                artistInfo.genres.map((genre) => <li key={genre}>{genre}</li>)}
               <br />
               <br />
               <li>Popularity: {artistInfo.popularity}</li>
