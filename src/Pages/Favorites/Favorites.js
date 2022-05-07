@@ -1,21 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import SearchBar from '../../Components/SearchBar/SearchBar';
-import FavoriteCard from '../../Components/FavoriteCard/FavoriteCard';
+import React, { useState } from 'react';
+import { SearchBar, FavoriteCard } from '../../Components';
+import { useFavorites } from './useFavorites';
 import './Favorites.css';
 
 export default function Favorites() {
-  const users = JSON.parse(sessionStorage.getItem('users'));
-  const currentUserUsername = useSelector((state) => state.currentUserUsername.value);
-  const currentUser = users.find((user) => user.username === currentUserUsername);
-  const currentUserFavorites = currentUser.favorites;
+  const { displayedFavorites, artistIdToFavoriteMap, addArtist, removeArtist } = useFavorites();
+  const [explode, setExplode] = useState(false);
+
+  function Bomb() {
+    throw new Error('CABOO0OM!');
+  }
 
   return (
     <React.Fragment>
       <SearchBar />
-      <div className='cards-container'>
-        {currentUserFavorites.map((artist) => <FavoriteCard artistInfo={artist} />)}
-      </div>
+      {displayedFavorites.length ?
+        <div className="cards-container">
+          {displayedFavorites.map((artist) => (
+            <FavoriteCard
+              key={artist.id}
+              artistInfo={artist}
+              addArtist={addArtist}
+              removeArtist={removeArtist}
+              isFavorite={artistIdToFavoriteMap[artist.id]}
+            />))}
+        </div> :
+        <div className="no-cards-main">
+          <div className="no-cards-container">
+            <h1>No favorites</h1>
+            <p>at least the page is not broken</p>
+            <h2 onClick={() => setExplode(true)}>YET...</h2>
+          </div>
+        </div>}
+      {explode && <Bomb />}
     </React.Fragment>
   );
 }

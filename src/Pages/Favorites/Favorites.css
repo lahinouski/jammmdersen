@@ -1,4 +1,46 @@
 .cards-container {
-  height: 500px;
+  height: 465px;
   overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.no-cards-container h1,
+.no-cards-container h2,
+.no-cards-container p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.no-cards-container h2 {
+  width: fit-content;
+  cursor: pointer;
+  font-size: 4rem;
+  transition: color .25s;
+}
+
+.no-cards-container h2:hover {
+  color: #010c3f;
+}
+
+.no-cards-container p {
+  font-size: .86rem;
+  color: rgba(256, 256, 256, .6);
+}
+
+.no-cards-container {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.no-cards-main {
+  display: flex;
+}
+
+@media screen and (min-height: 1079px) {
+  .cards-container {
+    height: 690px;
+  }
 }

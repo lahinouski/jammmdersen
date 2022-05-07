@@ -1,0 +1,51 @@
+.error-message-main {
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+  background-image: url('./cotdg.jpeg.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: rgba(256, 256, 256, .6);
+}
+
+.error-message-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.error-message-container h1 {
+  font-size: 15.4rem;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.error-message-container h2 {
+  font-size: 4.2rem;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.error-message-container p {
+  font-weight: 600;
+}
+
+.error-message-container a {
+  text-decoration: none;
+  color: rgba(256, 256, 256, .8);
+  transition: color .25s;
+}
+
+.error-message-container a:hover {
+  color: #6c41ec;
+}
+
+.error-atom {
+  color: rgba(256, 256, 256, .6);
+  margin: 0;
+  padding: 0;
+  font-size: 3rem;
+  position: relative;
+  bottom: 1.48rem;
+}

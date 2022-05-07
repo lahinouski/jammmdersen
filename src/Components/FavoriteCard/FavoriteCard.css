@@ -11,8 +11,9 @@
 }
 
 .details-container-small {
-  margin: .8rem 3.8rem;
-  max-width: 35%;
+  margin: .8rem 0 .8rem 3.8rem;
+  min-width: 500px;
+  max-width: 500px;
   max-height: 200px;
   display: flex;
   background-color: rgba(1, 12, 63, .7);

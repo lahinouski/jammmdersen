@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { createSelector } from 'reselect';
 
 export const searchResultsSlice = createSlice({
   name: 'searchResults',
@@ -13,11 +12,6 @@ export const searchResultsSlice = createSlice({
     }
   }
 });
-
-// export const getMemoizedSearchResults = createSelector(
-//   (state) => state.searchResults,
-//   (searchResults) => searchResults.value
-// );
 
 export const { setSearchResults, eraseSearchResults } = searchResultsSlice.actions;
 

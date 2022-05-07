@@ -2,7 +2,6 @@ const clientId = '221191b429194bccb50d64986a518586';
 // const redirectUri = 'http://jammmdersen.surge.sh';
 const redirectUri = 'http://localhost:3000/';
 const accessToken = sessionStorage.getItem('accessToken');
-// alert(accessToken);
 
 const Spotify = {
   getAccessToken() {
@@ -22,7 +21,7 @@ const Spotify = {
 
   search(searchTerm) {
     const headers = { Authorization: `Bearer ${accessToken}` };
-    return fetch(`https://api.spotify.com/v1/search?type=track&q=${searchTerm}`, { headers: headers })
+    return fetch(`https://api.spotify.com/v1/search?type=track&q=${searchTerm}`, { headers })
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -49,7 +48,7 @@ const Spotify = {
 
   examine(artistId) {
     const headers = { Authorization: `Bearer ${accessToken}` };
-    return fetch(`https://api.spotify.com/v1/artists/${artistId}`, { headers: headers })
+    return fetch(`https://api.spotify.com/v1/artists/${artistId}`, { headers })
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -66,8 +65,6 @@ const Spotify = {
             followers: jsonResponse.followers.total,
             popularity: jsonResponse.popularity
           }
-        } else {
-          return null; // ???
         }
       });
   }

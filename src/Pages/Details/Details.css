@@ -3,10 +3,15 @@ img {
   max-width: 440px;
 }
 
+.details-main {
+  display: flex;
+  justify-content: center;
+}
+
 .details-container {
-  margin: auto 12.8rem;
-  width: 60%;
-  min-width: 60%;
+  position: relative;
+  width: 900px;
+  min-width: 900px;
   display: flex;
   background-color: rgba(1, 12, 63, .7);
   box-shadow: 0 2.2px 1.2px 0 #000;
@@ -20,15 +25,17 @@ img {
 }
 
 .details-container h2 {
-  margin: 1.5rem 1rem 0 1.9rem;
-  max-width: 19.2rem;
-  max-height: 6rem;
+  margin: 1.5rem 0 0 1.9rem;
+  max-height: 6.5rem;
   overflow: hidden;
   font-size: 2.8rem;
   text-align: left;
 }
 
 .details-info {
+  width: 392px;
+  min-width: 392px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -36,7 +43,7 @@ img {
 
 .details-action {
   position: absolute;
-  left: 57.175rem;
+  right: -3px;
   cursor: pointer;
   font-size: 2.2rem;
   padding: .2rem .8rem;

@@ -1,6 +1,6 @@
-.TrackList {
-  width: 90%;
-  height: 500px;
+.track-list {
+  width: 72%;
+  height: 440px;
   overflow-y: scroll;
   padding: 0 10%;
 }
@@ -8,4 +8,10 @@
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent;
+}
+
+@media screen and (min-height: 1079px) {
+  .track-list {
+    height: 660px;
+  }
 }
