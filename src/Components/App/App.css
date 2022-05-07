@@ -71,3 +71,7 @@ header {
   font-weight: 500;
   color: #fff;
 }
+
+img {
+  object-fit: cover;
+}

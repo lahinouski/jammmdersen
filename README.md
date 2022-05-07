@@ -35,7 +35,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Redux
 
-<li> Используем Modern Redux with Redux Toolkit . ✔️
+<li> Используем Modern Redux with Redux Toolkit. ✔️
 <li> Используем слайсы. ✔️
 (<a href="https://github.com/lahinouski/jammmdersen/blob/main/src/features/currentUserUsernameSlice.js">currentUserUsernameSlice</a>)
 <li> Есть хотя бы одна кастомная мидлвара. ✔️
