@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchBar } from '../../Components';
+// import { SearchBar } from '../../Components';
 import { useDetails } from './useDetails';
 import './Details.css';
 
@@ -8,7 +8,7 @@ export default function Details() {
 
   return (
     <React.Fragment>
-      <SearchBar />
+      {/* <SearchBar /> */}
       <div className="details-main">
         <div className="details-container">
           <img src={artistInfo.picture} alt={artistInfo.name} />
