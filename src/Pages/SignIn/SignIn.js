@@ -23,7 +23,7 @@ export default function SignIn() {
         <h1><span className="highlight">S</span>ign in<span className="highlight notes">&#9835;</span></h1>
         <form onSubmit={(event) => onSubmitForm(event, userForm)}>
           <div className="form-input-row">
-            <label for="username">Username:</label>
+            <label htmlFor="username">Username:</label>
             <input
               type="text"
               name="username"
@@ -32,7 +32,7 @@ export default function SignIn() {
               required />
           </div>
           <div className="form-input-row">
-            <label for="password">Password:</label>
+            <label htmlFor="password">Password:</label>
             <input
               type="password"
               name="password"
@@ -41,7 +41,7 @@ export default function SignIn() {
               required />
           </div>
           <div className="form-input-row">
-            <label for="confirmPassword">Confirm Password:</label>
+            <label htmlFor="confirmPassword">Confirm Password:</label>
             <input
               type="password"
               name="confirmPassword"
