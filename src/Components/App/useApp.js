@@ -10,7 +10,7 @@ export const useApp = () => {
   useEffect(() => {
     dispatch(setCurrentUser(sessionStorage.getItem('userOnline')));
     Spotify.getAccessToken();
-  }, []);
+  }, [dispatch]);
 
   function handleLogOut() {
     dispatch(eraseCurrentUser());

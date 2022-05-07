@@ -7,7 +7,7 @@ function Button({ search, term, label, backgroundColor }) {
   const style = { backgroundColor };
   const debouncedSearch = debounce(() => search(term), 150);
 
-  useEffect(() => debouncedSearch.cancel(), []);
+  useEffect(() => debouncedSearch.cancel(), [debouncedSearch]);
 
   return (
     <div className="search-button">

@@ -5,8 +5,8 @@ import { eraseSearchResults } from '../../features';
 
 export const useSearchBar = () => {
   const currentUserUsername = useSelector((state) => state.currentUserUsername.value);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const setHistory = useCallback((searchTerm) => {
     const users = JSON.parse(sessionStorage.getItem('users'));
@@ -34,9 +34,9 @@ export const useSearchBar = () => {
     }
 
     navigate(`/search?track=${term}`);
-  }, [currentUserUsername, setHistory]);
+  }, [currentUserUsername, setHistory, navigate]);
 
-  useEffect(() => () => dispatch(eraseSearchResults()), []);
+  useEffect(() => () => dispatch(eraseSearchResults()), [dispatch]);
 
   return { search };
 };

@@ -9,7 +9,7 @@ export default function SearchBar() {
   const [term, setTerm] = useState('');
   const debouncedSearch = debounce(() => search(term), 150);
 
-  useEffect(() => debouncedSearch.cancel(), []);
+  useEffect(() => debouncedSearch.cancel(), [debouncedSearch]);
 
   return (
     <div className="search-bar">

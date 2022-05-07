@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setSearchResults } from '../../features/searchResultsSlice';
+import { setSearchResults } from '../../features';
 import Spotify from '../../util/Spotify';
 
 export const useTrackList = () => {
@@ -15,7 +15,7 @@ export const useTrackList = () => {
       Spotify.search(searchTerm)
         .then((tracks) => dispatch(setSearchResults(tracks)));
     }
-  }, [searchTerm]);
+  }, [searchTerm, dispatch]);
 
   return { searchResults };
 };

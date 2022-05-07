@@ -18,7 +18,7 @@ export const useDetails = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  useEffect(() => setIsFavorite(artistIsInFavorites));
+  useEffect(() => setIsFavorite(artistIsInFavorites), [artistIsInFavorites]);
   useEffect(() => {
     const artistId = params.get('artist');
     if (artistId) {
@@ -26,13 +26,13 @@ export const useDetails = () => {
         .then((artistInfo) => dispatch(getDetails(artistInfo)));
     }
     return () => dispatch(eraseDetails());
-  }, []);
+  }, [params, dispatch]);
 
   const udateUsers = useCallback(() => {
     const usersExceptCurrent = users.filter(({ username }) => username !== currentUserUsername);
     const updatedUsers = [...usersExceptCurrent, currentUser];
     sessionStorage.setItem('users', JSON.stringify(updatedUsers));
-  }, [currentUser, currentUserUsername]);
+  }, [users, currentUser, currentUserUsername]);
 
   const addArtist = useCallback(() => {
     if (!currentUserUsername) {
@@ -43,14 +43,14 @@ export const useDetails = () => {
       udateUsers();
       setIsFavorite(!isFavorite);
     }
-  }, [currentUser, currentUserUsername, artistIsInFavorites, artistInfo, setIsFavorite, udateUsers]);
+  }, [currentUser, currentUserUsername, isFavorite, artistIsInFavorites, artistInfo, setIsFavorite, udateUsers, navigate]);
 
   const removeArtist = useCallback(() => {
     const updatedFavorites = currentUser.favorites.filter(({ id }) => id !== artistInfo.id);
     currentUser.favorites = updatedFavorites;
     udateUsers();
     setIsFavorite(!isFavorite);
-  }, [artistInfo, currentUser, setIsFavorite, udateUsers]);
+  }, [artistInfo, currentUser, isFavorite, setIsFavorite, udateUsers]);
 
   return { artistInfo, isFavorite, addArtist, removeArtist };
 };

@@ -25,7 +25,7 @@ export const useLogin = () => {
     store.dispatch({ type: 'LOG IN', payload: form.username });
     sessionStorage.setItem('userOnline', form.username);
     navigate("/");
-  }, [users]);
+  }, [users, dispatch, navigate]);
 
   return { onSubmitForm };
 };
