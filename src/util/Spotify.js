@@ -1,22 +1,24 @@
-const clientId = '221191b429194bccb50d64986a518586';
-// const redirectUri = 'http://jammmdersen.surge.sh';
-const redirectUri = 'http://localhost:3000/';
-const accessToken = sessionStorage.getItem('accessToken');
+import axios from 'axios';
+
+const client_id = '221191b429194bccb50d64986a518586';
+const client_secret = '7628a6b52ba24ce2b861b79d2cafadb0';
+let accessToken = sessionStorage.getItem('accessToken');
 
 const Spotify = {
   getAccessToken() {
-    if (accessToken) {
-      return accessToken;
-    } else if (window.location.href.match(/access_token=([^&]*)/) && window.location.href.match(/expires_in=([^&]*)/)) {
-      const Url = window.location.href;
-      const tokenArray = Url.match(/access_token=([^&]*)/);
-      const expiresInArray = Url.match(/expires_in=([^&]*)/);
-      sessionStorage.setItem('accessToken', tokenArray[1]);
-      window.setTimeout(() => sessionStorage.removeItem('accessToken'), expiresInArray[1] * 1000);
-      window.history.pushState('Access Token', null, '/');
-    } else {
-      window.location = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
-    }
+    if (accessToken) return accessToken;
+
+    axios('https://accounts.spotify.com/api/token', {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Basic ' + btoa(client_id + ':' + client_secret)
+      },
+      data: 'grant_type=client_credentials',
+      method: 'POST'
+    }).then(tokenResponse => {
+      sessionStorage.setItem('accessToken', tokenResponse.data.access_token);
+      accessToken = sessionStorage.getItem('accessToken');
+    });
   },
 
   search(searchTerm) {
