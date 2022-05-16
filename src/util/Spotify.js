@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const client_id = '221191b429194bccb50d64986a518586';
-const client_secret = '7628a6b52ba24ce2b861b79d2cafadb0';
+const client_id = null; // https://developer.spotify.com/dashboard/applications
+const client_secret = null; // https://developer.spotify.com/dashboard/applications
 let accessToken = sessionStorage.getItem('accessToken');
 
 const Spotify = {

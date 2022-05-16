@@ -4,6 +4,7 @@ import './SignIn.css';
 
 export default function SignIn() {
   const { onSubmitForm } = useSignIn();
+  const [isChecked, setIsChecked] = useState(false);
   const [userForm, setUserForm] = useState({
     username: '',
     password: '',
@@ -16,7 +17,7 @@ export default function SignIn() {
     const nextFormState = { ...userForm, [event.target.name]: event.target.value };
     setUserForm(nextFormState);
   }
-  
+
   return (
     <div className="signin-main">
       <div className="signin-container">
@@ -48,6 +49,16 @@ export default function SignIn() {
               value={userForm.confirmPassword}
               onChange={onUpdateField}
               required />
+          </div>
+          <div className="form-checkbox">
+            <label htmlFor="checkbox">I am literally a robot.</label>
+            <input
+              type="checkbox"
+              name="checkbox"
+              checked={isChecked}
+              onChange={() => setIsChecked(!isChecked)}
+            />
+            {isChecked && <span>Nice!1 11</span>}
           </div>
           <button className="submit-button" type="submit">SIGN IN</button>
         </form>

@@ -7,9 +7,8 @@ export default function ErrorPage() {
       <div className="error-message-container">
         <h1>404</h1>
         <h2>Site crashed<br />* * * * * * * <span className="error-atom">&#9883;</span> *</h2>
-        <p>Have you tried <a href="https://psnprofiles.com/trophies/12237-curse-of-the-dead-gods/legoghetto?order=psn-rarity" target="_blank">Curse of the Dead Gods</a> btw?</p>
+        <p>Have you tried <a href="https://www.youtube.com/watch?v=opi0yOWUcKc" target="_blank">Curse of the Dead Gods</a> btw?</p>
       </div>
     </div>
   );
 }
-

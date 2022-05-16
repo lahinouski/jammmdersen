@@ -30,7 +30,10 @@ function FavoriteCard({ artistInfo, removeArtist, addArtist, isFavorite }) {
 }
 
 FavoriteCard.propTypes = {
-  artistInfo: PropTypes.object
+  artistInfo: PropTypes.object,
+  removeArtist: PropTypes.func,
+  addArtist: PropTypes.func,
+  isFavorite: PropTypes.bool
 }
 
 export default FavoriteCard;
