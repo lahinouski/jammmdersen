@@ -1,4 +1,4 @@
-.Track {
+.track {
   display: flex;
   align-items: center;
   margin: 20px;
@@ -9,18 +9,18 @@
   border-radius: 0 55px 55px 0;
 }
 
-.Track-action {
+.track-action {
   cursor: pointer;
   padding: 1.6rem;
   font-size: .9rem;
   transition: color .25s;
 }
 
-.Track-action:hover {
+.track-action:hover {
   color: rgba(265, 265, 265, .5);
 }
 
-.Track-information {
+.track-information {
   flex-grow: 1;
   display: flex;
   flex-direction: row;
@@ -28,24 +28,24 @@
   align-items: center;
 }
 
-.Track-information img {
+.track-information img {
   width: 64px;
   height: 64px;
   margin-right: 20px;
 }
 
-.Track-data {
+.track-data {
   display: block;
   width: 75%;
 }
 
-.Track-data h3 {
+.track-data h3 {
   margin: .4rem 0;
   max-height: 1.35rem;
   overflow: hidden;
 }
 
-.Track-data p {
+.track-data p {
   margin-block-start: 0;
   margin-block-end: 0;
   font-size: .82rem;
@@ -55,8 +55,14 @@
   overflow: hidden;
 }
 
-.Track-information audio {
+.track-information audio {
   margin-left: 1rem;
   display: block;
   clear: left;
+}
+
+.audio-player span {
+  font-size: .9rem;
+  position: relative;
+  bottom: 3px;
 }

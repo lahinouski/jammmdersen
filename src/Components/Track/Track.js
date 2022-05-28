@@ -7,18 +7,20 @@ function Track({ track }) {
   const navigate = useNavigate();
 
   return (
-    <div className="Track">
-      <div className="Track-information">
+    <div className="track">
+      <div className="track-information">
         <img src={track.artwork} alt={`${track.name} album artwork`} />
-        <div className="Track-data">
+        <div className="track-data">
           <h3>{track.name}</h3>
           <p>{track.artist} | {track.album}</p>
         </div>
         <div className="audio-player">
-          <audio src={track.sample} type="audio/ogg" controls />
+          {track.sample ?
+            <audio src={track.sample} type="audio/ogg" controls /> :
+            <span>No sample :(</span>}
         </div>
       </div>
-      <a className="Track-action" onClick={() => navigate(`/details?artist=${track.artistId}`)}>Details</a>
+      <a className="track-action" onClick={() => navigate(`/details?artist=${track.artistId}`)}>Details</a>
     </div>
   );
 }
