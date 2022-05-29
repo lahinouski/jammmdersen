@@ -19,3 +19,13 @@
 .search-bar input:focus {
   outline: none;
 }
+
+@media all and (max-width: 800px) {
+  .search-bar {
+    padding: 2.5rem 0 1.5rem 0;
+  }
+
+  .search-bar input {
+    padding: .68rem 0;
+  }
+}

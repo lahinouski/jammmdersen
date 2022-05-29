@@ -15,3 +15,15 @@
     height: 660px;
   }
 }
+
+@media all and (max-width: 800px) {
+  .track-list {
+    height: 60%;
+  }
+}
+
+@media all and (max-width: 340px) {
+  .track-list {
+    height: 50%;
+  }
+}

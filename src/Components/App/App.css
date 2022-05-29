@@ -47,7 +47,6 @@ header {
 }
 
 .logo h1 {
-  margin: 0;
   margin: .8rem 2rem;
   background-color: #010c3f;
   text-align: center;
@@ -74,4 +73,26 @@ header {
 
 img {
   object-fit: cover;
+}
+
+@media all and (max-width: 800px) {
+  .logo h1 {
+    font-size: .88rem;
+    margin: .8rem;
+  }
+
+  .navigation-text {
+    height: 47px;
+    display: flex;
+    align-items: center;
+  }
+
+  .navigation-text-link {
+    font-size: .88rem;
+    margin: 0 .9rem 0 0;
+  }
+
+  .displayCurrentUser {
+    display: none;
+  }
 }

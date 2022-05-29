@@ -8,3 +8,17 @@
 .history-header {
   margin: 2rem;
 }
+
+@media all and (max-width: 800px) {
+  .history-cards-container {
+    height: 70%;
+    overflow-y: scroll;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .history-header {
+    margin: 1.2rem;
+    font-size: 1.8rem;
+  }
+}

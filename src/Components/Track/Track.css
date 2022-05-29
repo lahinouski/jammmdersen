@@ -66,3 +66,46 @@
   position: relative;
   bottom: 3px;
 }
+
+@media all and (max-width: 800px) {
+  .track {
+    height: 180px;
+    width: 290px;
+    border-radius: 0 25px 25px 0;
+    padding: 0;
+    margin: 20px 0;
+    flex-direction: column;
+  }
+
+  .track-information {
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+  }
+
+  .track-data {
+    width: 55%;
+  }
+
+  .audio-player {
+    margin: 10px 0 0 0;
+  }
+
+  .audio-player span {
+    margin: 10px;
+  }
+
+  .track-action {
+    padding: 1.2rem 0 1.2rem 60%;
+  }
+}
+
+@media all and (max-width: 340px) {
+  .track {
+    width: 270px;
+  }
+
+  .track-information audio {
+    margin: .5rem;
+  }
+}

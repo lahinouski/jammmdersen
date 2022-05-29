@@ -72,9 +72,17 @@
   .hidden-container {
     margin: 0 auto;
   }
-  
+
   .click-arrow {
     width: 82px;
     height: 82px;
+  }
+}
+
+@media all and (max-width: 800px) {
+
+  .greeting-container h1,
+  .click-arrow {
+    display: none;
   }
 }

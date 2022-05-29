@@ -52,3 +52,32 @@
   display: flex;
   justify-content: space-between;
 }
+
+@media all and (max-width: 800px) {
+  .details-info-small {
+    display: none;
+  }
+
+  .details-and-toggle {
+    min-width: 0;
+    max-width: 0;
+  }
+
+  .details-info-small {
+    display: none;
+  }
+
+
+  .details-container-small {
+    min-width: 200px;
+    max-width: 200px;
+    max-height: 200px;
+  }
+
+  .details-action-small {
+    position: relative;
+    right: 46px;
+  }
+}
+
+@media all and (max-width: 340px) {}

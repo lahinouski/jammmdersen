@@ -4,7 +4,6 @@
   margin: 20px;
   max-height: 35px;
   padding: .88rem .55rem;
-  /* margin-left: 15rem; */
   background-color: rgba(1, 12, 63, .7);
   box-shadow: 0 2.2px 1.2px 1.2px #000;
   border-radius: 0 55px 55px 0;
@@ -68,4 +67,33 @@
 
 span {
   color: #6c41ec;
+}
+
+@media all and (max-width: 800px) {
+  .history-item {
+    justify-content: space-between;
+  }
+
+  .history-item-data h3 {
+    font-size: .92rem;
+  }
+
+  .history-item-data {
+    max-width: 54%;
+  }
+
+  .history-item-information {
+    max-width: 68%;
+    min-width: 68%;
+  }
+
+  .history-item-data p {
+    font-size: .62rem;
+  }
+
+  .history-item-action {
+    padding: 0 .9rem 0 0;
+    font-size: .68rem;
+    font-weight: 600;
+  }
 }
